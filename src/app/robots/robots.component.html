@@ -1,3 +1,42 @@
-<p>
-  robots works!
-</p>
+<div class="robot-container mb-3">
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Number of Robots</span>
+    </div>
+    <input type="number" class="form-control" name="robotNumber" [(ngModel)]="numberOfRobots">
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Number of Moves</span>
+    </div>
+    <input type="number" class="form-control" name="robotNumberOfMoves" [(ngModel)]="numberOfMoves">
+  </div>
+  <div class="input-group mb-3 center">
+    or
+  </div>
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <span class="input-group-text">Moves</span>
+    </div>
+    <input type="text" class="form-control" name="robotMoves" [(ngModel)]="moveString">
+  </div>
+  <button type="button" class="btn btn-primary" (click)="init()">Run</button>
+  <button type="button" class="btn btn-secondary" (click)="moveString = '';init()">Clear Moves and Run</button>
+</div>
+<div class="d-flex">
+  <div>
+    <ng-container *ngFor="let log of logs">
+      <div [className]="log.colorClass">{{log.action}}</div>
+    </ng-container>
+  </div>
+  <div class="ml-3">
+    <ng-container *ngFor="let robot of robots">
+      <div class="card mb-3" style="width: 18rem;height: 10rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{robot.name}}</h5>
+          <p class="card-text">Presents delivered: {{ robot.numberOfPresentsDelivered}}</p>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
